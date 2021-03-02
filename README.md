@@ -23,8 +23,13 @@ usage: cryptar.sh COMMAND [ARGS...]"
 ## IDEA: Rust Implementation
 The goal of the proposed Rust implementation would be to replace the shell script parts with Rust code and libraries. Instead of a `bash` script wrapping `gpg` and `tar`; it would be a single binary that create an encrypted `tar` archive that is compatible with `gpg` and `tar`; but maybe not this script. 
 
+### Libraries to Use
+* tar
+* openssl
+* std
+
 ### Maybe Scrap Backwards Compatiblity With the Script?
-^^^Title
+For the Rust implementation
 
 ## IDEA: `.rawr` file format
 `.rawr` files will consist of multiple parts; a (possibly) unencrypted header, and a definitely encrypted rest of the file. The header will be of some yet-to-be-determined size to store what cipher was used for automatic cipher detection. The cipher might be obfuscated in some way to prevent cryptanalysis of the rest of the file. 
