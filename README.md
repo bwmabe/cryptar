@@ -23,7 +23,7 @@ usage: cryptar.sh COMMAND [ARGS...]"
 ## IDEA: Rust Implementation
 The goal of the proposed Rust implementation would be to replace the shell script parts with Rust code and libraries. Instead of a `bash` script wrapping `gpg` and `tar`; it would be a single binary that create an encrypted `tar` archive that is compatible with `gpg` and `tar`; but maybe not this script. 
 
-### Libraries to Use
+### Rust Libraries to Use
 * tar
 * openssl
 * std
@@ -35,8 +35,8 @@ For the Rust implementation
 `.rawr` files will consist of multiple parts; a (possibly) unencrypted header, and a definitely encrypted rest of the file. The header will be of some yet-to-be-determined size to store what cipher was used for automatic cipher detection. The cipher might be obfuscated in some way to prevent cryptanalysis of the rest of the file. 
 
 ### Possible Structure of a `.rawr` file
-	* 128-byte (TENTATIVE) Header detailing the cipher used for the body
-	* variable size body containing data encrypted by the cipher defined in the header
+	* Header detailing the cipher used for the body
+	* Body containing data encrypted by the cipher defined in the header
 
 ### Other `.rawr` Idea
 Have the header encrypted using a cipher that CANNOT be user-defined like the body cipher. 
@@ -48,3 +48,6 @@ The header will contain a region that indicates what cipher was used to encrypt 
 The body will be encrypted using a user-defined cipher and a large secondary key.
 
 *Maybe nested encrypted containers of arbitrary depth???*
+
+## Links That I Might Find Useful In the Future
+	* [openssl:symm](https://docs.rs/openssl/0.10.32/openssl/symm/index.html)
